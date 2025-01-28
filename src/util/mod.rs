@@ -1,5 +1,6 @@
+pub mod spawning;
+
 use std::future::Future;
-use std::ops::DerefMut;
 use std::pin::Pin;
 use std::task::{Context, Poll, Waker};
 
