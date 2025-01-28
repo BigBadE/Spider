@@ -1,3 +1,11 @@
-[workspace]
-members = ["implementation", "library"]
-resolver = "2"
+[package]
+name = "spider"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.43.0", features = ["full"] }
+lazy_static = "1.5.0"
+
+[features]
+spider = []

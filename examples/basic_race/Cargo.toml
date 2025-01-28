@@ -1,0 +1,8 @@
+[package]
+name = "basic_race"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+spider = { path = "../../", features = ["spider"] }
+rand = "0.9.0-beta.3"
