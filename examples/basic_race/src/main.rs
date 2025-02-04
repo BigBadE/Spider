@@ -11,20 +11,31 @@ pub fn main() {
 
 pub async fn race() {
     let mutex = Arc::new(Mutex::new(0));
-
     let mut handles = Vec::new();
-    for _ in 0..10 {
+
+    {
         let mutex = mutex.clone();
         handles.push(tokio::spawn::spawn(async move {
-            tokio::bypass::time::sleep(Duration::new(0, (random::<f64>() * 1000000000.0) as u32)).await;
-            println!("Saw {} for {}", mutex.lock().await, random::<f64>() * 1000000000.0);
+            println!("Saw {} for 1", mutex.lock().await);
+        }));
+    }
+    {
+        let mutex = mutex.clone();
+        handles.push(tokio::spawn::spawn(async move {
+            println!("Saw {} for 2", mutex.lock().await);
+        }));
+    }
+    {
+        let mutex = mutex.clone();
+        handles.push(tokio::spawn::spawn(async move {
+            println!("Saw {} for 3", mutex.lock().await);
         }));
     }
 
-    tokio::bypass::time::sleep(Duration::new(0, 1000000001)).await;
+    tokio::bypass::time::sleep(Duration::new(0, 1000001)).await;
 }
 
 #[tokio::test]
 pub async fn test() {
-    tokio::run_sim(race()).await;
+    tokio::run_sim(|| race()).await;
 }

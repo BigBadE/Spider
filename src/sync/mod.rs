@@ -2,9 +2,9 @@ use std::sync::atomic::Ordering;
 #[cfg(not(feature = "spider"))]
 pub use tokio::sync::{Mutex, MutexGuard};
 
+use crate::spider::Spider;
+use crate::ID;
 use tokio::sync::{Mutex as TMutex, MutexGuard as TMutexGuard};
-use crate::{ID, SPIDER};
-use crate::spawn::TASK_ID;
 
 #[cfg(feature = "spider")]
 pub struct Mutex<T> {
@@ -22,8 +22,7 @@ impl<T> Mutex<T> {
     }
 
     pub async fn lock(&self) -> TMutexGuard<'_, T> {
-        println!("Lock on id {:?} with mutex {}", TASK_ID.get(), self.id);
-        SPIDER.lock().unwrap().dependencies.entry(self.id).or_default().insert(TASK_ID.get().0);
+        Spider::wait_for_resume().await;
         self.inner.lock().await
     }
 }
