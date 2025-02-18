@@ -28,7 +28,6 @@ mod util;
 pub mod runtime;
 
 pub use tokio::pin;
-use crate::spawn::TASK_ID;
 
 #[cfg(feature = "spider")]
 lazy_static! {
