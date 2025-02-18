@@ -2,7 +2,7 @@ use crate::spawn::TASK_ID;
 use crate::SPIDER;
 use std::collections::{HashMap, HashSet};
 use std::thread;
-use tokio::sync::broadcast::{channel, Receiver, Sender};
+use real_tokio::sync::broadcast::{channel, Receiver, Sender};
 
 pub(crate) struct Spider {
     // Maps a call location

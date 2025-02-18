@@ -7,12 +7,12 @@ use std::future::Future;
 use itertools::Itertools;
 use lazy_static::lazy_static;
 #[cfg(not(feature = "spider"))]
-pub use tokio::*;
+pub use real_tokio::*;
 
 #[cfg(feature = "spider")]
-pub use tokio::{main, test};
+pub use real_tokio::{main, test};
 #[cfg(feature = "spider")]
-pub use tokio as bypass;
+pub use real_tokio as bypass;
 
 #[cfg(feature = "spider")]
 pub mod sync;
@@ -27,7 +27,7 @@ mod util;
 #[cfg(feature = "spider")]
 pub mod runtime;
 
-pub use tokio::pin;
+pub use real_tokio::pin;
 
 #[cfg(feature = "spider")]
 lazy_static! {

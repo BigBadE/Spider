@@ -1,5 +1,5 @@
 use std::future::Future;
-use tokio::runtime::Runtime as TRuntime;
+use real_tokio::runtime::Runtime as TRuntime;
 use crate::util::spawning::setup_spawn;
 
 pub struct Runtime {

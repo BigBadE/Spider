@@ -1,10 +1,10 @@
 use std::sync::atomic::Ordering;
 #[cfg(not(feature = "spider"))]
-pub use tokio::sync::{Mutex, MutexGuard};
+pub use real_tokio::sync::{Mutex, MutexGuard};
 
 use crate::spider::Spider;
 use crate::ID;
-use tokio::sync::{Mutex as TMutex, MutexGuard as TMutexGuard};
+use real_tokio::sync::{Mutex as TMutex, MutexGuard as TMutexGuard};
 
 #[cfg(feature = "spider")]
 pub struct Mutex<T> {

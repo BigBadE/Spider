@@ -1,5 +1,5 @@
 use std::io;
-use tokio::runtime::Builder as TBuilder;
+use real_tokio::runtime::Builder as TBuilder;
 use crate::runtime::runtime::Runtime;
 
 pub struct Builder {
