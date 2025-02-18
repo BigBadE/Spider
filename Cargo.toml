@@ -4,7 +4,7 @@ version = "1.43.0"
 edition = "2021"
 
 [dependencies]
-tokio = { version = "1.43.0", features = ["full"] }
+real_tokio = { git = "https://github.com/MystenLabs/tokio-msim-fork.git", rev = "7329bff6ee996d8df6cf810a9c2e59631ad5a2fb", package = "real_tokio", features = ["full"] }
 lazy_static = "1.5.0"
 
 itertools = "0.14.0"
